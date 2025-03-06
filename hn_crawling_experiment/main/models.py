@@ -12,3 +12,6 @@ class StoryData(models.Model):
     type = models.CharField(max_length=15) # type(job, story, ...)
     url = models.URLField() # link
     content = models.TextField(max_length=100000) # story content
+
+    def __str__(self):
+        return self.title
