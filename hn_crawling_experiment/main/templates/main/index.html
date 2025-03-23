@@ -5,6 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-    First page of django!
+	<h1>Newsis Website!</h1>
+	<table>
+	{% for list in postlist %}
+		<ul>
+			<li>{{list.postname}}</li>
+			<li>{{list.contents}}</li>
+		</ul>
+	{% endfor %}
+	</table>
 </body>
 </html>
