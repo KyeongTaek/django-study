@@ -9,8 +9,7 @@
 	<table>
 	{% for list in postlist %}
 		<ul>
-			<li>{{list.postname}}</li>
-			<li>{{list.contents}}</li>
+			<li><a href="{{list.pk}}/">{{list.postname}}</a></li>
 		</ul>
 	{% endfor %}
 	</table>
