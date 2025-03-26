@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
 
 # Create your views here.
@@ -18,3 +18,17 @@ def posting(request, pk):
 def login(request):
     return render(request, 'main/login.html')
 
+# new_post function that requests new_post.html
+def new_post(request):
+    if request.method == 'POST':
+        if request.POST['mainphoto']:
+            new_article=Post.objects.create(
+                    postname=request.POST['postname'],
+                    contents=request.POST['contents'],
+                    mainphoto=request.POST['mainphoto'],
+            )
+            return redirect('/')
+        else:
+
+            return render(request, 'main/new_post.html')
+    return render(request, 'main/new_post.html')
