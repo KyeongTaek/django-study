@@ -21,14 +21,16 @@ def login(request):
 # new_post function that requests new_post.html
 def new_post(request):
     if request.method == 'POST':
-        if request.POST['mainphoto']:
+        if "mainphoto" in request.FILES:
             new_article=Post.objects.create(
                     postname=request.POST['postname'],
                     contents=request.POST['contents'],
-                    mainphoto=request.POST['mainphoto'],
+                    mainphoto=request.FILES['mainphoto'],
             )
-            return redirect('/')
         else:
-
-            return render(request, 'main/new_post.html')
+            new_article=Post.objects.create(
+                    postname=request.POST['postname'],
+                    contents=request.POST['contents'],
+            )
+        return redirect('/')
     return render(request, 'main/new_post.html')
