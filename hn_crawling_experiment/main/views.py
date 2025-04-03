@@ -1,12 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import Post
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 # index function that requests index.html
 def index(request):
+    page = request.GET.get('page', '1') # page
     postlist = Post.objects.all()
-    return render(request, 'main/index.html', {'postlist':postlist})
+    paginator = Paginator(postlist, 5) # show 5 posts per page
+    page_obj = paginator.get_page(page)
+    context = {'postlist':postlist}
+    return render(request, 'main/index.html', context)
 
 # posting function that requests posting.html
 def posting(request, pk):
