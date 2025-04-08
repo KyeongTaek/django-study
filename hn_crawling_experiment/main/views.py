@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Post
 from django.core.paginator import Paginator
 
+from .serializers import PostSerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 # Create your views here.
 
 # index function that requests index.html
@@ -14,9 +18,15 @@ def index(request):
     return render(request, 'main/index.html', context)
 
 # posting function that requests posting.html
+@api_view(['POST'])
 def posting(request, pk):
-    post = Post.objects.get(pk=pk) # get a post by its primary key
-    return render(request, 'main/posting.html', {'post':post})
+#    post = Post.objects.get(pk=pk) # get a post by its primary key
+#    return render(request, 'main/posting.html', {'post':post})
+    serializer = PostSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
 
 
 # login function that requests login.html
