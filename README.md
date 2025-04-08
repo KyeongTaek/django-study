@@ -5,6 +5,7 @@
 ### Reference
 - https://wikidocs.net/91422
 - https://softwaree.tistory.com/74
+- https://wikidocs.net/197558
 
 ### Git commit message convention
 - Follwed https://webruden.tistory.com/486, which used [Udacity commit message convention](https://udacity.github.io/git-styleguide/)
