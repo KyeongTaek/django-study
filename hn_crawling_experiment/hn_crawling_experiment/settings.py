@@ -106,7 +106,7 @@ LOGIN_REDIRECT_URL = '/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
 
@@ -119,7 +119,7 @@ REST_FRAMEWORK = {
         'anon': '100/day',
         'user': '1000/day',
     },
-    'DEFAULT_PAGINATION_CLASS': 'reset_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
 
