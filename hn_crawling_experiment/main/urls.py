@@ -7,9 +7,10 @@ from django.conf import settings
 from rest_framework import routers
 
 
+
 router = routers.DefaultRouter()
 router.register('post', PostViewSet, basename='post')
-router.register('user', UserCreateViewSet, basename='user')
+router.register('subscribe', UserCreateViewSet, basename='subscribe')
 
 urlpatterns = [
     path('', include(router.urls))
